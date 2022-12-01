@@ -38,12 +38,15 @@ fn main() -> Result<(), Error> {
         }
     }
 
-    println!("{}", biggestSum);
-    println!("{}", secondSum);
-    println!("{}", thirdSum);
+    //println!("{}", biggestSum);
+    //println!("{}", secondSum);
+    //println!("{}", thirdSum);
 
 
     let sum: i32 = biggestSum + secondSum + thirdSum;
+    print!("{}", "answer part 1:");
+    println!("{}", biggestSum);
+    print!("{}", "answer part 2:");
     println!("{}", sum);
     Ok(())
 }
