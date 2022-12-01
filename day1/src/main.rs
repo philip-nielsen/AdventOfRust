@@ -9,10 +9,10 @@ fn main() -> Result<(), Error> {
     let input = File::open(path)?;
     let buffered = BufReader::new(input);
 
-    let mut biggestSum: i32 = 0;
-    let mut secondSum: i32 = 0;
-    let mut thirdSum: i32 = 0;
-    let mut tempSum: i32 = 0;
+    let mut biggest_sum: i32 = 0;
+    let mut second_sum: i32 = 0;
+    let mut third_sum: i32 = 0;
+    let mut temp_sum: i32 = 0;
 
     for line in buffered.lines() {
         //println!("{}", line?);
@@ -20,32 +20,32 @@ fn main() -> Result<(), Error> {
         if x != "" {
             let num: i32 = x.parse().unwrap();
 
-            tempSum += num;
+            temp_sum += num;
             //println!("{}", num);
         } else {
-            if tempSum > biggestSum {
-                thirdSum = secondSum;
-                secondSum = biggestSum;
-                biggestSum = tempSum;
+            if temp_sum > biggest_sum {
+                third_sum = second_sum;
+                second_sum = biggest_sum;
+                biggest_sum = temp_sum;
                 
-            } else if tempSum > secondSum {
-                thirdSum = secondSum;
-                secondSum = tempSum;
-            } else if tempSum > thirdSum {
-                thirdSum = tempSum;
+            } else if temp_sum > second_sum {
+                third_sum = second_sum;
+                second_sum = temp_sum;
+            } else if temp_sum > third_sum {
+                third_sum = temp_sum;
             }
-            tempSum = 0;
+            temp_sum = 0;
         }
     }
 
-    //println!("{}", biggestSum);
-    //println!("{}", secondSum);
-    //println!("{}", thirdSum);
+    //println!("{}", biggest_sum);
+    //println!("{}", second_sum);
+    //println!("{}", third_sum);
 
 
-    let sum: i32 = biggestSum + secondSum + thirdSum;
+    let sum: i32 = biggest_sum + second_sum + third_sum;
     print!("{}", "answer part 1:");
-    println!("{}", biggestSum);
+    println!("{}", biggest_sum);
     print!("{}", "answer part 2:");
     println!("{}", sum);
     Ok(())
