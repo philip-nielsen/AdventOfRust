@@ -1,8 +1,25 @@
-use std::fs::File;
 use std::collections::HashSet;
 
 fn main() {
-    let path = "input.txt";
+    let input = include_str!("../input.txt");
+    let mut score = 14;
+
+    for i in 0..input.len()-1 {
+        let mut signals = HashSet::new();
+        let temp = input.get(i..14+i).unwrap().chars();
+        
+        for c in temp {
+            signals.insert(c);
+        }
+        if signals.len() == 14 {
+            break;
+        }
+        score += 1;
+    }
+    println!("{}",score);
+}
+
+fn part1() { //Bad, very very bad solution
     let input = include_str!("../input.txt");
     let mut score = 1;
     let mut first = ' ';
